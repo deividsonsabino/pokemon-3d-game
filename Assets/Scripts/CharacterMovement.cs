@@ -14,10 +14,12 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] float speed = 10f;
     [SerializeField] float rotationSpeed = 5f;
     [SerializeField] Camera targetCamera;
+    PlayerAnimate playerAnimate;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        playerAnimate = GetComponent<PlayerAnimate>();
     }
     public void AddMoveVectorInput(Vector3 moveVector)
     {
@@ -28,8 +30,8 @@ public class CharacterMovement : MonoBehaviour
     {
         HandleMovement();
         HandleRotation();
+        HandleAnimation();
     }
-
 
     private void HandleMovement()
     {
@@ -58,5 +60,10 @@ public class CharacterMovement : MonoBehaviour
             Quaternion rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
             transform.rotation = rotation;
         }
+    }
+
+    private void HandleAnimation()
+    {
+        playerAnimate.motion = moveVectorInput.magnitude;
     }
 }

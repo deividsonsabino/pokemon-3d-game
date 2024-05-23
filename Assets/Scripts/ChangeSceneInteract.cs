@@ -8,6 +8,7 @@ public class ChangeSceneInteract : MonoBehaviour
 {
     public void ChangeScene()
     {
-        SceneManager.LoadSceneAsync("House");
+        SceneManager.UnloadSceneAsync("Town");
+        SceneManager.LoadSceneAsync("House", LoadSceneMode.Additive);
     }
 }

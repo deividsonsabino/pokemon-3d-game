@@ -716,6 +716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e4da107746ea7e4a858f147e30661ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetScene: House
 --- !u!114 &119324809
 MonoBehaviour:
   m_ObjectHideFlags: 0

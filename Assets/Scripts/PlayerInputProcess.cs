@@ -30,4 +30,9 @@ public class PlayerInputProcess : MonoBehaviour
     {
         moveVector = contextCallback.ReadValue<Vector2>();
     }
+
+    public void ProcessInteractInput(CallbackContext contextCallback)
+    {
+        characterInteract.Interact();
+    }
 }

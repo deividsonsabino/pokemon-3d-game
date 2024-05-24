@@ -4,9 +4,16 @@ using UnityEngine;
 
 public class CharacterInteract : MonoBehaviour
 {
+    PlayerCharacter playerCharacter;
     [SerializeField] Transform pivot;
     [SerializeField] Vector3 interactAreaSize = Vector3.one;
-public void Interact()
+
+    private void Awake()
+    {
+        playerCharacter = GetComponent<PlayerCharacter>();
+    }
+
+    public void Interact()
     {
         Collider[] colliders = Physics.OverlapBox(pivot.position, interactAreaSize);
 
@@ -15,7 +22,7 @@ public void Interact()
             Interactable interactable = colider.GetComponent<Interactable>();
             if (interactable != null)
             {
-                interactable.Interact();
+                interactable.Interact(playerCharacter);
                 break;
             }
         }

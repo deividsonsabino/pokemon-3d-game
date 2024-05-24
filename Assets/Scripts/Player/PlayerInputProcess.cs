@@ -26,13 +26,16 @@ public class PlayerInputProcess : MonoBehaviour
         characterMovement.AddMoveVectorInput(moveVector);
     }
 
-    public void ProcessMoveInput(CallbackContext contextCallback)
+    public void ProcessMoveInput(CallbackContext callbackContext)
     {
-        moveVector = contextCallback.ReadValue<Vector2>();
+        moveVector = callbackContext.ReadValue<Vector2>();
     }
 
-    public void ProcessInteractInput(CallbackContext contextCallback)
+    public void ProcessInteractInput(CallbackContext callbackContext)
     {
-        characterInteract.Interact();
+        if (callbackContext.phase == UnityEngine.InputSystem.InputActionPhase.Started)
+        {
+            characterInteract.Interact();
+        }
     }
 }
